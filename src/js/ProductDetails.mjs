@@ -1,5 +1,5 @@
-// import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+// import { setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -43,11 +43,20 @@ export default class ProductDetails {
   addToCart() {
     // const cartItems = getLocalStorage("so-cart") || [];
     // cartItems.push(product);
-    setLocalStorage("so-cart", this.product);
+    // setLocalStorage("so-cart", this.product);
+    let cartItems = getLocalStorage("so-cart");
+
+  // Ensure cartItems is an array
+  if (!Array.isArray(cartItems)) {
+    cartItems = []; // If it's not an array, set it to an empty array
+  }
+
+  cartItems.push(this.product); // Add the current product to the array
+  setLocalStorage("so-cart", cartItems);
   }
 
   renderProductDetails() {
-    const element = document.querySelector("selector");
+    const element = document.querySelector(".product-detail");
     element.insertAdjacentHTML(
         "afterbegin",
         productDetailsTemplate(this.product)
