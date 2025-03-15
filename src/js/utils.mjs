@@ -30,3 +30,17 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+// utils.mjs
+export function renderListWithTemplate(templateFn, parentElement, list, position = "afterbegin", clear = false) {
+  // Clear the contents of the parentElement if `clear` is true
+  if (clear) {
+    parentElement.innerHTML = '';
+  }
+
+  // Generate HTML strings for the list using the template function
+  const htmlStrings = list.map(templateFn).join('');
+
+  // Insert the generated HTML into the specified position within the parent element
+  parentElement.insertAdjacentHTML(position, htmlStrings);
+}
