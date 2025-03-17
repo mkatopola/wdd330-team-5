@@ -1,9 +1,16 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, qs } from "./utils.mjs";
 
 const products = document.querySelector(".products");
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
+  const productList = qs(".product-list");
+
+  if (cartItems.length === 0) {
+    productList.innerHTML = "<p>Your cart is empty!</p>";
+    return;
+  }
+
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   products.querySelector(".product-list").innerHTML = htmlItems.join("");
   renderCartTotal(cartItems);
