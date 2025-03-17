@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
@@ -17,6 +18,27 @@ function productDetailsTemplate(product) {
       <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
     </div></section>`;
 }
+=======
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+
+function productDetailsTemplate(product) {
+    return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
+      <h2 class="divider">${product.NameWithoutBrand}</h2>
+      <img
+        class="divider"
+        src="${product.Image}"
+        alt="${product.NameWithoutBrand}"
+      />
+      <p class="product-card__price">$${product.FinalPrice}</p>
+      <p class="product__color">${product.Colors[0].ColorName}</p>
+      <p class="product__description">
+      ${product.DescriptionHtmlSimple}
+      </p>
+      <div class="product-detail__add">
+        <button id="addToCart" data-id="${product.Id}">Add to Cart</button>
+      </div></section>`;
+  }
+>>>>>>> OL--team2
 
 export default class ProductDetails {
   constructor(productId, dataSource) {
@@ -24,6 +46,10 @@ export default class ProductDetails {
     this.product = {};
     this.dataSource = dataSource;
   }
+<<<<<<< HEAD
+=======
+
+>>>>>>> OL--team2
   async init() {
     // use our datasource to get the details for the current product. findProductById will return a promise! use await or .then() to process it
     this.product = await this.dataSource.findProductById(this.productId);
@@ -32,6 +58,7 @@ export default class ProductDetails {
     // once the HTML is rendered we can add a listener to Add to Cart button
     // Notice the .bind(this). Our callback will not work if we don't include that line. Review the readings from this week on 'this' to understand why.
     document
+<<<<<<< HEAD
       .getElementById("addToCart")
       .addEventListener("click", this.addToCart.bind(this));
   }
@@ -46,3 +73,29 @@ export default class ProductDetails {
     );
   }
 }
+=======
+    .getElementById("addToCart")
+    .addEventListener("click", this.addToCart.bind(this));
+  }
+
+  addToCart() {
+    let cartItems = getLocalStorage("so-cart");
+
+  // Ensure cartItems is an array
+  if (!Array.isArray(cartItems)) {
+    cartItems = []; // If it's not an array, set it to an empty array
+  }
+
+  cartItems.push(this.product); // Add the current product to the array
+  setLocalStorage("so-cart", cartItems);
+  }
+
+  renderProductDetails() {
+    const element = document.querySelector(".product-detail");
+    element.insertAdjacentHTML(
+        "afterbegin",
+        productDetailsTemplate(this.product)
+    );
+  }
+}
+>>>>>>> OL--team2

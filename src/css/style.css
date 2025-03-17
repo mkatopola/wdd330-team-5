@@ -202,6 +202,18 @@ button {
   grid-column: 3;
 }
 
+.cart-footer {
+  background-color: #303030;
+  font-size: 1.5rem;
+  margin: 10px 0 0;
+  padding: .2em 0;
+}
+
+.cart-total {
+  color: var(--primary-color);
+  margin: 0;
+}
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -213,6 +225,9 @@ button {
   .cart-card {
     font-size: inherit;
     grid-template-columns: 150px auto 15%;
+  }
+  .cart-footer {
+    font-size: 2.5rem;
   }
 }
 
