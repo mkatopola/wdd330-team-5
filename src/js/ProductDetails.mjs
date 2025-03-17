@@ -49,6 +49,7 @@ export default class ProductDetails {
   setLocalStorage("so-cart", cartItems);
   }
 
+
   renderProductDetails() {
     const element = document.querySelector(".product-detail");
     element.insertAdjacentHTML(

@@ -1,12 +1,41 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 const products = document.querySelector(".products");
+
+// Need a Function to remove an item from the cart
+function removeFromCart(productId) {
+  let cartItems = getLocalStorage("so-cart");
+
+  // Ensure cartItems is an array
+  if (!Array.isArray(cartItems)) {
+    cartItems = []; // If it's not an array, set it to an empty array
+  }
+
+  // Filter out the item you want to remove from the cart
+  cartItems = cartItems.filter(item => item.Id !== productId);
+
+  // Update the cart in localStorage
+  setLocalStorage("so-cart", cartItems);
+  renderCartContents();
+}
 
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   products.querySelector(".product-list").innerHTML = htmlItems.join("");
   renderCartTotal(cartItems);
+
+  // Add event listeners to the "Remove" buttons after rendering the items
+  document
+      .querySelectorAll(".remove").forEach(button => {
+        button.addEventListener("click", () => {
+          removeFromCart(button.getAttribute("data-id"));
+          console.log(button.getAttribute("data-id"));
+          });       
+      }); 
+
+  renderCartTotal(cartItems);
+
 }
 
 function cartItemTemplate(item) {
@@ -23,6 +52,7 @@ function cartItemTemplate(item) {
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
   <p class="cart-card__quantity">qty: 1</p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
+  <button class="remove" data-id="${item.Id}">X</button>
 </li>`;
 
   return newItem;
@@ -48,7 +78,6 @@ function renderCartTotal(cartItems) {
   if (cartItems.length > 0) {
     products.insertAdjacentHTML("beforeend", cartTotal(cartItems));
   }
-
 }
 
 renderCartContents();
