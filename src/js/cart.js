@@ -12,9 +12,14 @@ function removeFromCart(productId) {
   }
 
   // Filter out the item you want to remove from the cart
-  cartItems = cartItems.filter(item => item.Id !== productId);
+  // New!! I used findIndex function instead of filter
+  const index = cartItems.findIndex(item => item.Id === productId);
 
-  // Update the cart in localStorage
+  if (index !== -1) {
+    cartItems.splice(index, 1); // Remove only one occurrence
+  }
+
+  // Update the cart in localStorage and re-render
   setLocalStorage("so-cart", cartItems);
   renderCartContents();
 }
