@@ -47,8 +47,6 @@ export default class ProductDetails {
 
     cartItems.push(this.product); // Add the current product to the array
     setLocalStorage("so-cart", cartItems);
-    loadHeaderFooter();
-
   }
 
 

@@ -1,6 +1,7 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
 
 const products = document.querySelector(".products");
+loadHeaderFooter();
 
 // Need a Function to remove an item from the cart
 function removeFromCart(productId) {
@@ -35,7 +36,6 @@ function renderCartContents() {
       .querySelectorAll(".remove").forEach(button => {
         button.addEventListener("click", () => {
           removeFromCart(button.getAttribute("data-id"));
-          console.log(button.getAttribute("data-id"));
           });       
       }); 
 
