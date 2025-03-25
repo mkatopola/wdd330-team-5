@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage, loadHeaderFooter } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productDetailsTemplate(product) {
   return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
@@ -48,7 +48,6 @@ export default class ProductDetails {
     cartItems.push(this.product); // Add the current product to the array
     setLocalStorage("so-cart", cartItems);
   }
-
 
   renderProductDetails() {
     const element = document.querySelector(".product-detail");
