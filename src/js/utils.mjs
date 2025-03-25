@@ -50,8 +50,15 @@ export function setClick(selector, callback) {
 export function renderWithTemplate(template, parentElement, data, callback) {
   parentElement.innerHTML = template;
   if (callback) {
-    callback(data);
+    const number = data.length;
+    callback(number, parentElement);
   }
+}
+
+export function makeCartBadge(number, parentElement) {
+  const svgElement = parentElement.querySelector("svg");
+  const badge = `<span class="cart-badge">${number}</span>`;
+  svgElement.insertAdjacentHTML("afterend", badge);
 }
 
 export async function loadTemplate(path) {
@@ -62,9 +69,9 @@ export async function loadTemplate(path) {
 
 export async function loadHeaderFooter() {
   const headerTemplate = await loadTemplate("../partials/header.html");
+  const cartData = getLocalStorage("so-cart");
   const footerTemplate = await loadTemplate("../partials/footer.html");
   const headerElement = document.querySelector("#main-header");
   const footerElement = document.querySelector("#main-footer");
-  renderWithTemplate(headerTemplate, headerElement);
-  renderWithTemplate(footerTemplate, footerElement);
+  renderWithTemplate(headerTemplate, headerElement, cartData, makeCartBadge); renderWithTemplate(footerTemplate, footerElement);
 }
