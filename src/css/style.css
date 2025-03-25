@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -170,6 +170,34 @@ button {
 
 .products {
   padding: 0.5em;
+}
+
+/* Sort Control (move the sort control to the right) */
+.sort-control {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0.5em;
+}
+
+/* sort-control */
+.sort-control label {
+  margin-right: 0.5em;
+  font-size: 1.5rem;
+}
+
+#sortOptions {
+  width: 7rem;
+  padding: 0.5em;
+  border: 1px solid var(--dark-grey);
+  border-radius: 5px;
+  text-align: center;
+  background-color: var(--light-grey);
+  font-size: var(--small-font);
+  cursor: pointer;
+}
+
+#sortOptions option {
+  text-align: center;
 }
 
 .product-list {
