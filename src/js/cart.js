@@ -31,8 +31,7 @@ function renderCartContents() {
   renderCartTotal(cartItems);
 
   // Add event listeners to the "Remove" buttons after rendering the items
-  document
-      .querySelectorAll(".remove").forEach(button => {
+  document.querySelectorAll(".remove").forEach(button => {
         button.addEventListener("click", () => {
           removeFromCart(button.getAttribute("data-id"));
           console.log(button.getAttribute("data-id"));
@@ -84,5 +83,3 @@ function renderCartTotal(cartItems) {
     products.insertAdjacentHTML("beforeend", cartTotal(cartItems));
   }
 }
-
-renderCartContents();

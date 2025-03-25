@@ -1,5 +1,4 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
-import { addToCart } from './cart.js';
 
 function productDetailsTemplate(product) {
     return `<section class="product-detail"> <h3>${product.Brand.Name}</h3>
