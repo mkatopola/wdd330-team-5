@@ -65,7 +65,7 @@ export default class ProductList {
   }
 
   sortList(sortBy) {
-    // Clone the list so as not to modify the original data.
+    // Clonning the list so as not to modify the original data.
     let sortedList = [...this.list];
     if (sortBy === "name") {
       // Sort alphabetically by NameWithoutBrand.

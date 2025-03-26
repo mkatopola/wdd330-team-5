@@ -71,8 +71,6 @@ function cartItemTemplate(item) {
 function cartTotal(cartItems) {
   let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
 
-  // let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-
   return `
   <div class="cart-footer">
     <p class="cart-total">Total: $${total.toFixed(2)}</p>
