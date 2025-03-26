@@ -20,6 +20,7 @@ function removeFromCart(productId) {
   // Filter out the item you want to remove from the cart
   // New!! I used findIndex function instead of filter
   const index = cartItems.findIndex((item) => item.Id === productId);
+  // const index = cartItems.findIndex((item) => item.Id === productId);
 
   if (index !== -1) {
     cartItems.splice(index, 1); // Remove only one occurrence
@@ -40,6 +41,7 @@ function renderCartContents() {
   document.querySelectorAll(".remove").forEach((button) => {
     button.addEventListener("click", () => {
       removeFromCart(button.getAttribute("data-id"));
+      // console.log(button.getAttribute("data-id"));
     });
   });
 

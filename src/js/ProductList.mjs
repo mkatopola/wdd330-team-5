@@ -4,7 +4,7 @@ function productCardTemplate(product) {
   return `
     <li class='product-card'>
         <a href='/product_pages/index.html?product=${product.Id}'>
-            <img src='${product.Images.PrimaryMedium}' alt='Image of ${product.Name}'>
+            <img src='${product.Images.PrimaryMedium}' alt='Image of ${product.Name}' />
             <h2 class='card__brand'>${product.Brand.Name}</h2>
             <h3 class='card_name'>${product.NameWithoutBrand}</h3>
             <p class='product-card__price'>$${product.ListPrice.toFixed(2)}</p>
@@ -18,16 +18,58 @@ export default class ProductList {
     this.category = category;
     this.dataSource = dataSource;
     this.listElement = listElement;
+    this.list = [];
   }
 
   async init() {
+    this.list = await this.dataSource.getData(this.category);
     const list = await this.dataSource.getData(this.category);
+    this.insertSortControl();
+    this.renderList(this.list);
     this.renderList(list);
     document.querySelector(".title").textContent = this.category;
-
     document.querySelectorAll("#quickAddToCart").forEach((button) => {
       button.addEventListener("click", (event) => this.addToCart(event));
     });
+    this.attachSortListener();
+  }
+
+  insertSortControl() {
+    const container =
+      document.querySelector(".product-list-container") ||
+      this.listElement.parentElement;
+    if (!document.getElementById("sortOptions")) {
+      const sortControl = document.createElement("div");
+      sortControl.classList.add("sort-control");
+      sortControl.innerHTML = `
+        <label for="sortOptions">Sort by: </label>
+        <select id="sortOptions">
+          <option value="">-- Select --</option>
+          <option value="name">Name</option>
+          <option value="price">Price</option>
+        </select>`;
+      container.insertBefore(sortControl, this.listElement);
+    }
+  }
+
+  attachSortListener() {
+    const sortSelect = document.getElementById("sortOptions");
+    if (sortSelect) {
+      sortSelect.addEventListener("change", (e) => {
+        const sortBy = e.target.value;
+        this.sortList(sortBy);
+      });
+    }
+  }
+
+  sortList(sortBy) {
+    let sortedList = [...this.list];
+    if (sortBy === "name") {
+      sortedList.sort((a, b) => a.NameWithoutBrand.localeCompare(b.NameWithoutBrand));
+    } else if (sortBy === "price") {
+      sortedList.sort((a, b) => a.ListPrice - b.ListPrice);
+    }
+    this.renderList(sortedList);
   }
 
   addToCart(event) {
@@ -47,7 +89,9 @@ export default class ProductList {
         setLocalStorage("so-cart", cartItems);
     });
   }
+
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
-  }
+    renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
+  } 
 }
