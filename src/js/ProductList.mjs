@@ -1,4 +1,4 @@
-import { renderListWithTemplate } from "./utils.mjs";
+import { renderListWithTemplate, getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function productCardTemplate(product) {
   return `
@@ -9,6 +9,7 @@ function productCardTemplate(product) {
             <h3 class='card_name'>${product.NameWithoutBrand}</h3>
             <p class='product-card__price'>$${product.ListPrice.toFixed(2)}</p>
         </a>
+        <button id="quickAddToCart" data-id="${product.Id}">Add to Cart</button>
     </li>`;
 }
 
@@ -82,3 +83,4 @@ export default class ProductList {
     renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
   }
 }
+

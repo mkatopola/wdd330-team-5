@@ -1,4 +1,10 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import {
+  getLocalStorage,
+  setLocalStorage,
+  loadHeaderFooter,
+} from "./utils.mjs";
+
+loadHeaderFooter();
 
 const products = document.querySelector(".products");
 
@@ -13,6 +19,7 @@ function removeFromCart(productId) {
 
   // Filter out the item you want to remove from the cart
   // New!! I used findIndex function instead of filter
+  const index = cartItems.findIndex((item) => item.Id === productId);
   const index = cartItems.findIndex((item) => item.Id === productId);
 
   if (index !== -1) {
@@ -62,6 +69,8 @@ function cartItemTemplate(item) {
 }
 
 function cartTotal(cartItems) {
+  let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+
   let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
 
   return `
