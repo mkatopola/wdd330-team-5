@@ -22,24 +22,22 @@ export default class ProductList {
   }
 
   async init() {
-    // Get the product data and store it for later sorting.
     this.list = await this.dataSource.getData(this.category);
-    // Dynamically insert the sort control.
+    const list = await this.dataSource.getData(this.category);
     this.insertSortControl();
-    // Render the initial unsorted list.
     this.renderList(this.list);
-    // Set the page title.
+    this.renderList(list);
     document.querySelector(".title").textContent = this.category;
-    // Attach event listener to the sort control.
+    document.querySelectorAll("#quickAddToCart").forEach((button) => {
+      button.addEventListener("click", (event) => this.addToCart(event));
+    });
     this.attachSortListener();
   }
 
   insertSortControl() {
-    // Look for a container to insert the control. Preferably a parent with a class or fallback to listElement's parent.
     const container =
       document.querySelector(".product-list-container") ||
       this.listElement.parentElement;
-    // Only insert if it hasn't been added already.
     if (!document.getElementById("sortOptions")) {
       const sortControl = document.createElement("div");
       sortControl.classList.add("sort-control");
@@ -65,22 +63,35 @@ export default class ProductList {
   }
 
   sortList(sortBy) {
-    // Clonning the list so as not to modify the original data.
     let sortedList = [...this.list];
     if (sortBy === "name") {
-      // Sort alphabetically by NameWithoutBrand.
       sortedList.sort((a, b) => a.NameWithoutBrand.localeCompare(b.NameWithoutBrand));
     } else if (sortBy === "price") {
-      // Sort numerically by ListPrice.
       sortedList.sort((a, b) => a.ListPrice - b.ListPrice);
     }
-    // Render the sorted list.
     this.renderList(sortedList);
   }
 
-  renderList(list) {
-    // Use the helper to clear and re-render the list.
-    renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
-  }
-}
+  addToCart(event) {
+    // Get ID from button's data
+    const productId = event.target.getAttribute("data-id");
 
+    // Find the product data
+    this.dataSource.findProductById(productId).then((product) => {
+        
+        let cartItems = getLocalStorage("so-cart");
+
+        if (!Array.isArray(cartItems)) {
+            cartItems = [];
+        }
+
+        cartItems.push(product);
+        setLocalStorage("so-cart", cartItems);
+    });
+  }
+
+  renderList(list) {
+    renderListWithTemplate(productCardTemplate, this.listElement, list);
+    renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
+  } 
+}
