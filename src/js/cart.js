@@ -68,26 +68,23 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
-function cartTotal(cartItems) {
-  let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-
-  return `
-  <div class="cart-footer">
-    <p class="cart-total">Total: $${total.toFixed(2)}</p>
-  </div>
-  `;
-}
-
 function renderCartTotal(cartItems) {
-  const cartFooter = document.querySelector(".cart-footer");
+  const listFooter = document.querySelector(".list-footer");
+  let cartSubtotal = document.querySelector(".list-total");
 
-  if (cartFooter) {
-    cartFooter.remove();
-  }
+  const cartTotal = function (items) {
+    let total = items.reduce((sum, item) => sum + item.FinalPrice, 0);
 
-  if (cartItems.length > 0) {
-    products.insertAdjacentHTML("beforeend", cartTotal(cartItems));
-  }
+    if (cartSubtotal) {
+      cartSubtotal.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    if (cartItems.length > 0) {
+      listFooter.classList.remove("hide");
+    }
+  };
+
+  cartTotal(cartItems);
 }
 
 renderCartContents();
