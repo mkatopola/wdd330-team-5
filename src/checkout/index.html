@@ -52,20 +52,30 @@
 
           <fieldset class="checkout-summary">
             <legend>Order Summary</legend>
-
-            <div class="order__summary">
-              <div>Items: </div>
-              <div id="num-items"></div>
-              <div>Subtotal: </div>
-              <div id="cartTotal"></div>
-              <div>Tax: </div>
-              <div id="tax"></div>
-              <div>Shipping: </div>
-              <div id="shipping"></div>
-              <div>Total: </div>
-              <div id="orderTotal"></div>
-            </div>
+            <table class="order__summary">
+              <tr>
+                <th>Description</th>
+                <th class="right">Amount</th>
+              </tr>
+              <tr>
+                <td>Items : <span id="num-items"></span></td>
+                <td class="right" id="cartTotal"></td>
+              </tr>
+              <tr>
+                <td>Tax (6%) :</td>
+                <td class="right" id="tax"></td>
+              </tr>
+              <tr>
+                <td id="shippingState">Shipping to :</td>
+                <td class="right" id="shipping"></td>
+              </tr>
+              <tr class="total">
+                <td>Total :</td>
+                <td class="right" id="orderTotal"></td>
+              </tr>
+            </table>
           </fieldset>
+
           <button type="submit" id="checkoutSubmit">Checkout</button>
         </form>
       </section>
