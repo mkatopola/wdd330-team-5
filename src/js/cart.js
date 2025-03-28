@@ -86,26 +86,6 @@ function renderCartTotal(cartItems) {
   }
 }
 
-
-function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
-  const htmlItems = cartItems.map((item) => cartItemTemplate(item));
-  products.querySelector(".product-list").innerHTML = htmlItems.join("");
-  renderCartTotal(cartItems);
-
-  // Add event listeners to the "Remove" buttons after rendering the items
-  document
-      .querySelectorAll(".remove").forEach(button => {
-        button.addEventListener("click", () => {
-          removeFromCart(button.getAttribute("data-id"));
-          console.log(button.getAttribute("data-id"));
-          });       
-      }); 
-
-  renderCartTotal(cartItems);
-
-}
-
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
   <a href="#" class="cart-card__image">
