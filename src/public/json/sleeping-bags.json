@@ -61,7 +61,8 @@
         "Name": "Mountain Hardwear"
       },
       "ListPrice": 99.99,
-      "FinalPrice": 99.99
+      "FinalPrice": 99.99,
+      "Discount": "23%"
     },
     {
       "Id": "21KMF",
@@ -111,7 +112,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 149.99,
-      "FinalPrice": 149.99
+      "FinalPrice": 149.99,
+      "Discount": "29%"
     },
     {
       "Id": "640GU",
@@ -154,7 +156,8 @@
         "Name": "Therm-a-Rest"
       },
       "ListPrice": 49,
-      "FinalPrice": 49
+      "FinalPrice": 49,
+      "Discount": "62%"
     },
     {
       "Id": "861PY",
@@ -237,7 +240,8 @@
         "Name": "Kelty"
       },
       "ListPrice": 34.99,
-      "FinalPrice": 34.99
+      "FinalPrice": 34.99,
+      "Discount": "30%"
     },
     {
       "Id": "16PWY",
@@ -285,7 +289,8 @@
         "Name": "Klymit"
       },
       "ListPrice": 39.99,
-      "FinalPrice": 39.99
+      "FinalPrice": 39.99,
+      "Discount": "27%"
     },
     {
       "Id": "14GVH",
@@ -335,7 +340,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 189.99,
-      "FinalPrice": 189.99
+      "FinalPrice": 189.99,
+      "Discount": "27%"
     },
     {
       "Id": "621CP",
@@ -380,7 +386,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 79.99,
-      "FinalPrice": 79.99
+      "FinalPrice": 79.99,
+      "Discount": "24%"
     },
     {
       "Id": "10HGH",
@@ -430,7 +437,8 @@
         "Name": "Nordisk"
       },
       "ListPrice": 129.99,
-      "FinalPrice": 129.99
+      "FinalPrice": 129.99,
+      "Discount": "32%"
     },
     {
       "Id": "14GVF",
@@ -480,7 +488,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 229.99,
-      "FinalPrice": 229.99
+      "FinalPrice": 229.99,
+      "Discount": "27%"
     },
     {
       "Id": "14HDK",
@@ -530,7 +539,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 79.99,
-      "FinalPrice": 79.99
+      "FinalPrice": 79.99,
+      "Discount": "27%"
     },
     {
       "Id": "10HKN",
@@ -580,7 +590,8 @@
         "Name": "Nordisk"
       },
       "ListPrice": 279.99,
-      "FinalPrice": 279.99
+      "FinalPrice": 279.99,
+      "Discount": "30%"
     },
     {
       "Id": "14GVG",
@@ -630,7 +641,8 @@
         "Name": "Marmot"
       },
       "ListPrice": 133,
-      "FinalPrice": 133
+      "FinalPrice": 133,
+      "Discount": "49%"
     },
     {
       "Id": "16PWT",
@@ -678,7 +690,8 @@
         "Name": "PEAK SLUMBER"
       },
       "ListPrice": 34.99,
-      "FinalPrice": 34.99
+      "FinalPrice": 34.99,
+      "Discount": "30%"
     },
     {
       "Id": "10HXY",
@@ -728,7 +741,8 @@
         "Name": "Nordisk"
       },
       "ListPrice": 279.99,
-      "FinalPrice": 279.99
+      "FinalPrice": 279.99,
+      "Discount": "32%"
     },
     {
       "Id": "832UD",
@@ -771,7 +785,8 @@
         "Name": "Klymit"
       },
       "ListPrice": 79.99,
-      "FinalPrice": 79.99
+      "FinalPrice": 79.99,
+      "Discount": "27%"
     },
     {
       "Id": "16PWR",
@@ -819,7 +834,8 @@
         "Name": "Klymit"
       },
       "ListPrice": 69.99,
-      "FinalPrice": 69.99
+      "FinalPrice": 69.99,
+      "Discount": "30%"
     },
     {
       "Id": "858YV",
@@ -868,7 +884,8 @@
         "Name": "ALPS Mountaineering"
       },
       "ListPrice": 39,
-      "FinalPrice": 39
+      "FinalPrice": 39,
+      "Discount": "51%"
     },
     {
       "Id": "16PWX",
@@ -916,7 +933,8 @@
         "Name": "Klymit"
       },
       "ListPrice": 69.99,
-      "FinalPrice": 69.99
+      "FinalPrice": 69.99,
+      "Discount": "30%"
     },
     {
       "Id": "843YW",
@@ -964,7 +982,8 @@
         "Name": "Klymit"
       },
       "ListPrice": 179.99,
-      "FinalPrice": 179.99
+      "FinalPrice": 179.99,
+      "Discount": "28%"
     },
     {
       "Id": "10HPY",
@@ -1014,7 +1033,8 @@
         "Name": "Nordisk"
       },
       "ListPrice": 149.99,
-      "FinalPrice": 149.99
+      "FinalPrice": 149.99,
+      "Discount": "37%"
     },
     {
       "Id": "985KF",
@@ -1064,7 +1084,8 @@
         "Name": "The North Face"
       },
       "ListPrice": 149.99,
-      "FinalPrice": 149.99
+      "FinalPrice": 149.99,
+      "Discount": "28%"
     },
     {
       "Id": "985TP",
@@ -1114,7 +1135,8 @@
         "Name": "The North Face"
       },
       "ListPrice": 129.99,
-      "FinalPrice": 129.99
+      "FinalPrice": 129.99,
+      "Discount": "18%"
     },
     {
       "Id": "268GC",
@@ -1157,7 +1179,8 @@
         "Name": "Therm-a-Rest"
       },
       "ListPrice": 49,
-      "FinalPrice": 49
+      "FinalPrice": 49,
+      "Discount": "62%"
     },
     {
       "Id": "665JR",
@@ -1200,7 +1223,8 @@
         "Name": "ALPS Mountaineering"
       },
       "ListPrice": 12.99,
-      "FinalPrice": 12.99
+      "FinalPrice": 12.99,
+      "Discount": "24%"
     }
   ]
 }

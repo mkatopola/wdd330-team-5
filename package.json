@@ -11,7 +11,7 @@
     "test": "jest",
     "preview": "vite preview"
   },
-"overrides": {
+  "overrides": {
     "bossy": "^4.0.3",
     "d3": "^7.9.0",
     "d3-color": "^3.1.0",
@@ -20,7 +20,7 @@
     "lts": "^2.0.0",
     "request": "^2.88.2",
     "tough-cookie": "^5.1.2"
-},
+  },
   "author": "Shane Thompson",
   "license": "ISC",
   "devDependencies": {
@@ -42,5 +42,8 @@
     "last 3 opera versions",
     "last 3 ios_saf versions",
     "last 3 safari versions"
-  ]
+  ],
+  "dependencies": {
+    "start": "^5.1.0"
+  }
 }
