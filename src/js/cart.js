@@ -87,28 +87,6 @@ function renderCartTotal(cartItems) {
 }
 
 
-// Need a Function to remove an item from the cart
-function removeFromCart(productId) {
-  let cartItems = getLocalStorage("so-cart");
-
-  // Ensure cartItems is an array
-  if (!Array.isArray(cartItems)) {
-    cartItems = []; // If it's not an array, set it to an empty array
-  }
-
-  // Filter out the item you want to remove from the cart
-  // New!! I used findIndex function instead of filter
-  const index = cartItems.findIndex(item => item.Id === productId);
-
-  if (index !== -1) {
-    cartItems.splice(index, 1); // Remove only one occurrence
-  }
-
-  // Update the cart in localStorage and re-render
-  setLocalStorage("so-cart", cartItems);
-  renderCartContents();
-}
-
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
