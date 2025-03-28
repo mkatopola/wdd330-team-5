@@ -35,6 +35,20 @@ export default class CheckoutProcess {
     this.shipping = 0;
     this.tax = 0;
     this.orderTotal = 0;
+    document
+      .getElementById("cardNumber")
+      .addEventListener("input", function (e) {
+        let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+        value = value.replace(/(\d{4})/g, "$1 ").trim(); // Insert space every 4 digits
+        e.target.value = value;
+      });
+
+    document.getElementById("expiration").addEventListener("input", function (e) {
+      let value = e.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+      if (value.length >= 2)
+        value = value.slice(0, 2) + "/" + value.slice(2, 4); // Insert "/"
+      e.target.value = value;
+    });
   }
 
   init() {
@@ -73,7 +87,9 @@ export default class CheckoutProcess {
     // once the totals are all calculated display them in the order summary page
     const tax = document.querySelector(`${this.outputSelector} #tax`);
     const shipping = document.querySelector(`${this.outputSelector} #shipping`);
-    const shippingState = document.querySelector(`${this.outputSelector} #shippingState`);
+    const shippingState = document.querySelector(
+      `${this.outputSelector} #shippingState`,
+    );
     const orderTotal = document.querySelector(
       `${this.outputSelector} #orderTotal`,
     );
