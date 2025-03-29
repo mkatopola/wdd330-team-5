@@ -320,7 +320,7 @@ button {
   display: inline-block;
   margin-top: 15px;
   font-size: 1.5rem;
-  padding: .4em 1em;
+  padding: 0.4em 1em;
   text-decoration: none;
 }
 
@@ -347,13 +347,13 @@ button {
 }
 
 .checkout-form fieldset {
-  margin: 0 0 20PX;
+  margin: 0 0 20px;
 }
 
 .checkout-form input {
   display: block;
   width: 100%;
-  min-height: 48PX;
+  min-height: 48px;
   margin-bottom: 10px;
 }
 
@@ -387,7 +387,7 @@ button {
   }
 
   .checkout-form input {
-    min-height: 30PX;
+    min-height: 30px;
   }
 }
 
