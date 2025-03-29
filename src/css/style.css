@@ -320,7 +320,7 @@ button {
   display: inline-block;
   margin-top: 15px;
   font-size: 1.5rem;
-  padding: .4em 1em;
+  padding: 0.4em 1em;
   text-decoration: none;
 }
 
@@ -330,6 +330,7 @@ button {
   text-align: center;
 }
 
+/* Checkout Form */
 .checkout-form {
   width: 90%;
   max-width: 600px;
@@ -347,13 +348,13 @@ button {
 }
 
 .checkout-form fieldset {
-  margin: 0 0 20PX;
+  margin: 0 0 20px;
 }
 
 .checkout-form input {
   display: block;
   width: 100%;
-  min-height: 48PX;
+  min-height: 48px;
   margin-bottom: 10px;
 }
 
@@ -367,9 +368,34 @@ button {
   margin-inline: auto;
 }
 
-/* .order__summary {
-  
-} */
+/* Order Summary */
+.order__summary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.order__summary th,
+.order__summary td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.order__summary th {
+  text-align: left;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.order__summary td.right,
+.order__summary th.right {
+  text-align: right;
+}
+
+.order__summary tr.total td {
+  font-weight: bold;
+  border-top: 2px solid var(--dark-grey);
+}
 
 @media screen and (min-width: 500px) {
   body {
@@ -387,7 +413,7 @@ button {
   }
 
   .checkout-form input {
-    min-height: 30PX;
+    min-height: 30px;
   }
 }
 

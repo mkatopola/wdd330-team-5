@@ -42,30 +42,71 @@
             <legend>Payment</legend>
             <div class="checkout__payment">
               <label for="cardNumber">Card Number</label>
-              <input type="text" name="cardNumber" id="cardNumber" required />
+              <input
+                type="text"
+                name="cardNumber"
+                id="cardNumber"
+                required
+                inputmode="numeric"
+                pattern="[0-9\s]{13,19}"
+                maxlength="19"
+                placeholder="1234 5678 9012 3456"
+              />
               <label for="expiration">Expiration</label>
-              <input type="text" name="expiration" id="expiration" required />
+              <!-- <input type="text" /> -->
+              <input
+                type="text"
+                name="expiration"
+                id="expiration"
+                required
+                inputmode="numeric"
+                pattern="(0[1-9]|1[0-2])\/\d{2}"
+                maxlength="5"
+                placeholder="MM/YY"
+                required
+              />
               <label for="code">CVV</label>
-              <input type="text" name="code" id="code" required />
+              <!-- <input type="text" /> -->
+              <input
+                type="text"
+                name="code"
+                id="code"
+                required
+                inputmode="numeric"
+                pattern="\d{3,4}"
+                maxlength="4"
+                placeholder="CVV"
+                required
+              />
             </div>
           </fieldset>
 
           <fieldset class="checkout-summary">
             <legend>Order Summary</legend>
-
-            <div class="order__summary">
-              <div>Items: </div>
-              <div id="num-items"></div>
-              <div>Subtotal: </div>
-              <div id="cartTotal"></div>
-              <div>Tax: </div>
-              <div id="tax"></div>
-              <div>Shipping: </div>
-              <div id="shipping"></div>
-              <div>Total: </div>
-              <div id="orderTotal"></div>
-            </div>
+            <table class="order__summary">
+              <tr>
+                <th>Description</th>
+                <th class="right">Amount</th>
+              </tr>
+              <tr>
+                <td>Items : <span id="num-items"></span></td>
+                <td class="right" id="cartTotal"></td>
+              </tr>
+              <tr>
+                <td>Tax (6%) :</td>
+                <td class="right" id="tax"></td>
+              </tr>
+              <tr>
+                <td id="shippingState">Shipping to :</td>
+                <td class="right" id="shipping"></td>
+              </tr>
+              <tr class="total">
+                <td>Total :</td>
+                <td class="right" id="orderTotal"></td>
+              </tr>
+            </table>
           </fieldset>
+
           <button type="submit" id="checkoutSubmit">Checkout</button>
         </form>
       </section>
