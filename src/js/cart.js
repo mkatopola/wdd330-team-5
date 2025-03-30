@@ -126,20 +126,11 @@ function cartItemTemplate(item) {
 }
 
 
-function cartTotal(cartItems) {
-  let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-
-  return `
-  <div class="cart-footer">
-    <p class="cart-total">Total: $${total.toFixed(2)}</p>
-  </div>
-  `;
-}
-
 function renderCartTotal(cartItems) {
   let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
 
   const cartFooter = document.querySelector(".cart-footer");
+
   
   
 
@@ -150,6 +141,22 @@ function renderCartTotal(cartItems) {
     document.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
   }
 
+  const listFooter = document.querySelector(".list-footer");
+  let cartSubtotal = document.querySelector(".list-total");
+
+  const cartTotal = function (items) {
+    let total = items.reduce((sum, item) => sum + item.FinalPrice, 0);
+
+    if (cartSubtotal) {
+      cartSubtotal.textContent = `Total: $${total.toFixed(2)}`;
+    }
+
+    if (cartItems.length > 0) {
+      listFooter.classList.remove("hide");
+    }
+  };
+
+  cartTotal(cartItems);
 }
 
 

@@ -309,16 +309,92 @@ button {
   grid-column: 3;
 }
 
-.cart-footer {
-  background-color: #303030;
+.list-footer span {
+  display: block;
   font-size: 1.5rem;
-  margin: 10px 0 0;
-  padding: 0.2em 0;
 }
 
-.cart-total {
-  color: var(--primary-color);
-  margin: 0;
+.list-footer a {
+  background-color: #186f91;
+  color: #000;
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 1.5rem;
+  padding: 0.4em 1em;
+  text-decoration: none;
+}
+
+.divider.checkout h2 {
+  background-color: #186f91;
+  color: #fff;
+  text-align: center;
+}
+
+/* Checkout Form */
+.checkout-form {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto 0;
+}
+
+.checkout-form {
+  border: 1px solid #186f91;
+  margin-bottom: 20px;
+  padding: 1em;
+}
+
+.checkout-form legend {
+  font-weight: bold;
+}
+
+.checkout-form fieldset {
+  margin: 0 0 20px;
+}
+
+.checkout-form input {
+  display: block;
+  width: 100%;
+  min-height: 48px;
+  margin-bottom: 10px;
+}
+
+.checkout-form fieldset,
+.checkout-form {
+  border-radius: 5px;
+}
+
+.divider.checkout button {
+  background-color: #186f91;
+  margin-inline: auto;
+}
+
+/* Order Summary */
+.order__summary {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.order__summary th,
+.order__summary td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.order__summary th {
+  text-align: left;
+  background-color: var(--primary-color);
+  color: #fff;
+}
+
+.order__summary td.right,
+.order__summary th.right {
+  text-align: right;
+}
+
+.order__summary tr.total td {
+  font-weight: bold;
+  border-top: 2px solid var(--dark-grey);
 }
 
 @media screen and (min-width: 500px) {
@@ -336,12 +412,59 @@ button {
     grid-template-columns: 150px auto 15%;
   }
 
-  .cart-footer {
-    font-size: 2.5rem;
+  .checkout-form input {
+    min-height: 30px;
   }
 }
 
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+.newsletter-signup {
+  text-align: center;
+  display: flexbox;
+  flex-direction: column;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(46, 114, 25, 0.63);
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+}
+
+.newsletter-signup h2 {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.newsletter-signup input {
+  width: 80%;
+  padding: 18px;
+  margin: 10px 0;
+  border: 1px solid #392cac;
+  border-radius: 6px;
+}
+
+.newsletter button {
+  width: 80%;
+  padding: 20px;
+  background-color: #1e7921;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.newsletter-signup button:hover {
+  background-color: #99c917;
+}
+
+#message {
+  margin-top: 10px;
+  font-size: 14px;
+  color: green;
 }
