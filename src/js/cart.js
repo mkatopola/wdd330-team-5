@@ -45,8 +45,8 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   products.querySelector(".product-list").innerHTML = htmlItems.join("");
   renderCartTotal(cartItems);
-  console.log(cartItems.quantity);
-  console.log(cartItems);
+  //console.log(cartItems.quantity);
+  //console.log(cartItems);
   
 
   // Add event listeners to the "Remove" buttons after rendering the items
@@ -68,7 +68,7 @@ function renderCartContents() {
       if (item){
         item.quantity = (item.quantity || 1) + 1;
         item.listPrice = item.listPrice || 0;
-        console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
+        //console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
         item.listPrice = item.listPrice || item.ListPrice; 
         item.FinalPrice = item.listPrice * item.quantity;
       } 
@@ -87,7 +87,7 @@ function renderCartContents() {
       if (item && item.quantity > 1) {
         item.quantity = (item.quantity || 1) - 1;
         item.listPrice = item.listPrice || 0;
-        console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
+        //console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
         item.listPrice = item.listPrice || item.ListPrice; // Fallback to ListPrice
         item.FinalPrice = item.listPrice * item.quantity;
       } 
@@ -118,7 +118,7 @@ function cartItemTemplate(item) {
   <button class = "decrease" data-id = "${item.Id}">-</button>
   <span>${item.quantity || 1}</span>
   <button class = "increase" data-id = "${item.Id}">+</button></p>
-  <p class="cart-card__price">$${item.FinalPrice}</p>
+  <p class="cart-card__price">$${item.FinalPrice.toFixed(2)}</p>
   <button class="remove" data-id="${item.Id}">X</button>
 </li>`;
 
