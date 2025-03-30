@@ -41,7 +41,7 @@ function removeFromCart(productId) {
 }
 
 function renderCartContents() {
-  const cartItems = getLocalStorage("so-cart");
+  let cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   products.querySelector(".product-list").innerHTML = htmlItems.join("");
   renderCartTotal(cartItems);
@@ -127,22 +127,10 @@ function cartItemTemplate(item) {
 
 
 function renderCartTotal(cartItems) {
-  let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
-
-  const cartFooter = document.querySelector(".cart-footer");
-
-  
-  
-
-  if (!cartFooter){
-    products.insertAdjacentHTML("beforeend", `<div class="cart-footer"><p class="cart-total">Total: $${total.toFixed(2)}</p></div>`);
-
-  } else{
-    document.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
-  }
 
   const listFooter = document.querySelector(".list-footer");
   let cartSubtotal = document.querySelector(".list-total");
+  const cartProducts = document.querySelector(".products")
 
   const cartTotal = function (items) {
     let total = items.reduce((sum, item) => sum + item.FinalPrice, 0);
@@ -153,13 +141,42 @@ function renderCartTotal(cartItems) {
 
     if (cartItems.length > 0) {
       listFooter.classList.remove("hide");
+    } else {
+      listFooter.classList.add("hide");
     }
   };
 
   cartTotal(cartItems);
+  displayLinksIfEmptyCart(cartItems, cartProducts);
 }
 
+function displayLinksIfEmptyCart(cartItems, cartProducts) {
+  let linksContainer = document.querySelector(".cart_links-container");
 
+  if (cartItems.length === 0 && !linksContainer) {
+    linksContainer = document.createElement("div");
+    linksContainer.setAttribute("class", "cart_links-container");
+    linksContainer.innerHTML = `
+    <h1>Your cart is empty but don't worry, tell me what you need:</h1>
+    <ul>
+      <li>
+        <a href="/product_listing/index.html?category=tents">Tents</a>
+      </li>
+      <li>
+        <a href="/product_listing/index.html?category=backpacks">Backpacks</a>
+      </li>
+      <li>
+        <a href="/product_listing/index.html?category=sleeping-bags">Sleeping Bags</a>
+      </li>
+      <li>
+        <a href="/product_listing/index.html?category=hammocks">Hammocks</a>
+      </li>
+    </ul>
+    `;
+
+    cartProducts.append(linksContainer);
+  }
+}
 
 renderCartContents();
 
