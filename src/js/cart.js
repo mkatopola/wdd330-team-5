@@ -8,6 +8,15 @@ loadHeaderFooter();
 
 const products = document.querySelector(".products");
 
+function getCartItems() {
+  return JSON.parse(localStorage.getItem("so-cart")) || [];
+}
+
+function setCartItems(cartItems) {
+  localStorage.setItem("so-cart", JSON.stringify(cartItems));
+  renderCartContents();
+}
+
 // Need a Function to remove an item from the cart
 function removeFromCart(productId) {
   let cartItems = getLocalStorage("so-cart");
@@ -36,6 +45,9 @@ function renderCartContents() {
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   products.querySelector(".product-list").innerHTML = htmlItems.join("");
   renderCartTotal(cartItems);
+  console.log(cartItems.quantity);
+  console.log(cartItems);
+  
 
   // Add event listeners to the "Remove" buttons after rendering the items
   document.querySelectorAll(".remove").forEach((button) => {
@@ -45,11 +57,53 @@ function renderCartContents() {
     });
   });
 
+  // Add event listeners to the quantity change after rendering the items
+  // Event Listener for Increase
+  document.querySelectorAll(".increase").forEach((button) => {
+    button.addEventListener("click", () => {
+      let cartItems = getCartItems();
+      const id = button.getAttribute("data-id");
+      const item = cartItems.find((item) => item.Id === id);
+      
+      if (item){
+        item.quantity = (item.quantity || 1) + 1;
+        item.listPrice = item.listPrice || 0;
+        console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
+        item.listPrice = item.listPrice || item.ListPrice; 
+        item.FinalPrice = item.listPrice * item.quantity;
+      } 
+      
+      setCartItems(cartItems);
+    });
+  });
+
+  // Event Listener for Decrease
+  document.querySelectorAll(".decrease").forEach((button) => {
+    button.addEventListener("click", () => {
+      let cartItems = getCartItems();
+      const id = button.getAttribute("data-id");
+      const item = cartItems.find((item) => item.Id === id);
+      
+      if (item && item.quantity > 1) {
+        item.quantity = (item.quantity || 1) - 1;
+        item.listPrice = item.listPrice || 0;
+        console.log(`Item: ${item.Name}, Quantity: ${item.quantity}, Unit Price: ${item.listPrice}`);
+        item.listPrice = item.listPrice || item.ListPrice; // Fallback to ListPrice
+        item.FinalPrice = item.listPrice * item.quantity;
+      } 
+      
+      setCartItems(cartItems);
+    });
+  }); 
+
+  
+
   renderCartTotal(cartItems);
 }
 
 function cartItemTemplate(item) {
-  const newItem = `<li class="cart-card divider">
+  const newItem = `
+  <li class="cart-card divider">
   <a href="#" class="cart-card__image">
     <img
       src="${item.Images.PrimaryMedium}"
@@ -60,7 +114,10 @@ function cartItemTemplate(item) {
     <h2 class="card__name">${item.Name}</h2>
   </a>
   <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-  <p class="cart-card__quantity">qty: 1</p>
+  <p class="cart-card__quantity">
+  <button class = "decrease" data-id = "${item.Id}">-</button>
+  <span>${item.quantity || 1}</span>
+  <button class = "increase" data-id = "${item.Id}">+</button></p>
   <p class="cart-card__price">$${item.FinalPrice}</p>
   <button class="remove" data-id="${item.Id}">X</button>
 </li>`;
@@ -68,7 +125,22 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+
 function renderCartTotal(cartItems) {
+  let total = cartItems.reduce((sum, item) => sum + item.FinalPrice, 0);
+
+  const cartFooter = document.querySelector(".cart-footer");
+
+  
+  
+
+  if (!cartFooter){
+    products.insertAdjacentHTML("beforeend", `<div class="cart-footer"><p class="cart-total">Total: $${total.toFixed(2)}</p></div>`);
+
+  } else{
+    document.querySelector(".cart-total").textContent = `Total: $${total.toFixed(2)}`;
+  }
+
   const listFooter = document.querySelector(".list-footer");
   let cartSubtotal = document.querySelector(".list-total");
 
@@ -87,4 +159,7 @@ function renderCartTotal(cartItems) {
   cartTotal(cartItems);
 }
 
+
+
 renderCartContents();
+
