@@ -32,6 +32,27 @@ export default class ProductList {
       button.addEventListener("click", (event) => this.addToCart(event));
     });
     this.attachSortListener();
+    this.searchInput();
+  }
+
+  searchInput(){
+    const searchInput = document.getElementById("searchBar");
+    searchInput.addEventListener("input", (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      if (!searchTerm) {
+        this.renderList(this.list);
+        return;
+      }
+      const filteredList = this.list.filter((product) =>
+        product.NameWithoutBrand.toLowerCase().includes(searchTerm)
+      );
+      if (filteredList.length === 0) {
+        this.listElement.innerHTML = `<p>No products found matching "${searchTerm}"</p>`;
+        return;
+      }
+      this.renderList(filteredList);
+    });
+
   }
 
   insertSortControl() {
