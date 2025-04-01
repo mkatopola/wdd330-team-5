@@ -14,4 +14,3 @@ const myList = new ProductList(category, dataSource, listElement);
 console.log(category)
 // finally call the init method to show the products
 myList.init();
-
