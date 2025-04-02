@@ -5,7 +5,7 @@ async function convertToJson(res) {
   if (res.ok) {
     return jsonResponse;
   } else {
-    throw {name: "servicesError", message: jsonResponse};
+    throw { name: "servicesError", message: jsonResponse };
   }
 }
 
@@ -33,5 +33,16 @@ export default class ExternalServices {
       body: JSON.stringify(payload),
     };
     return await fetch(`${baseURL}checkout/`, options).then(convertToJson);
+  }
+
+  async signUp(userload) {
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userload),
+    };
+    return await fetch(`${baseURL}users/`, options).then(convertToJson);
   }
 }

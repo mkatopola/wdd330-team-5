@@ -94,6 +94,19 @@ header {
   color: #186f91;
 }
 
+.sign-up {
+  color: var(--font-base);
+  text-decoration: none;
+  padding: 20px 20px;
+  line-height: 20px;
+  font-size: 20px;
+  font-weight: bolder;
+  font-family: var(--font-body);
+  border: 4px solid var(--secondary-color);
+  background-color: var(--tertiary-color);
+}
+
+
 button {
   padding: 0.5em 2em;
   background-color: var(--secondary-color);
@@ -171,13 +184,15 @@ button {
 .products {
   padding: 0.5em;
 }
-.products h1{
+
+.products h1 {
   text-align: center;
   font-size: 17px;
   background-color: #186f91;
   padding: 1rem;
   color: whitesmoke;
 }
+
 /* Sort Control (move the sort control to the right) */
 .sort-control {
   display: flex;

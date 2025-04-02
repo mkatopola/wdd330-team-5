@@ -3,7 +3,7 @@ import ExternalServices from "./ExternalServices.mjs";
 
 const services = new ExternalServices();
 
-function formDataToJSON(formElement) {
+export function formDataToJSON(formElement) {
   // convert the form data to a JSON object
   const formData = new FormData(formElement);
   const convertedJSON = {};
