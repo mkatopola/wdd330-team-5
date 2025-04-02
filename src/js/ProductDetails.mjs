@@ -46,8 +46,19 @@ export default class ProductDetails {
       cartItems = []; // If it's not an array, set it to an empty array
     }
 
-    cartItems.push(this.product); // Add the current product to the array
+    // TASK DUPLICATE ITEMS IN CART BY TEDDY
+    let isDuplicate = false;
+    for (const item of cartItems) {
+      if (item.Id === this.productId) {
+        item.quantity = (item.quantity || 1) + 1;
+        isDuplicate = true;
+      }
+    }
+    if (!isDuplicate) {
+      cartItems.push(this.product); // Add the current product to the array
+    }
     setLocalStorage("so-cart", cartItems);
+
   }
 
   renderProductDetails() {
