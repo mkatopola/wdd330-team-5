@@ -259,3 +259,29 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* Styles for sorting buttons */
+.sort-container {
+  margin-bottom: 1rem;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  background-color: white;
+  z-index: 10;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--light-grey);
+}
+
+.sort-container button {
+  margin: 0 0.5rem;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  font-weight: bold; /* Make text bold */
+}
+
+.sort-container button:hover {
+  background-color: #e0e0e0;
+}

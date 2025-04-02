@@ -24,6 +24,24 @@ export default class ProductList {
     // to resolve it
     const list = await this.dataSource.getData();
     this.renderList(list);
+
+    // Add event listeners for sorting
+    document.querySelector("#sortByName").addEventListener("click", () => {
+      this.sortAndRender(list, "name");
+    });
+    document.querySelector("#sortByPrice").addEventListener("click", () => {
+      this.sortAndRender(list, "price");
+    });
+  }
+
+  sortAndRender(list, criteria) {
+    const sortedList = [...list];
+    if (criteria === "name") {
+      sortedList.sort((a, b) => a.Name.localeCompare(b.Name));
+    } else if (criteria === "price") {
+      sortedList.sort((a, b) => a.ListPrice - b.ListPrice);
+    }
+    this.renderList(sortedList);
   }
 
   renderList(list) {
