@@ -35,7 +35,7 @@ export default class ProductList {
     this.searchInput();
   }
 
-  searchInput(){
+  searchInput() {
     const searchInput = document.getElementById("searchBar");
     searchInput.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
@@ -99,20 +99,32 @@ export default class ProductList {
 
     // Find the product data
     this.dataSource.findProductById(productId).then((product) => {
-        
-        let cartItems = getLocalStorage("so-cart");
 
-        if (!Array.isArray(cartItems)) {
-            cartItems = [];
+      let cartItems = getLocalStorage("so-cart");
+
+      if (!Array.isArray(cartItems)) {
+        cartItems = [];
+      }
+
+      let isDuplicate = false;
+      for (const item of cartItems) {
+        if (item.Id === product.Id) {
+          item.quantity = (item.quantity || 1) + 1;
+          isDuplicate = true;
         }
+      }
+      if (!isDuplicate) {
+        cartItems.push(product); // Add the current product to the array
+      }
+      setLocalStorage("so-cart", cartItems);
 
-        cartItems.push(product);
-        setLocalStorage("so-cart", cartItems);
+      // cartItems.push(product);
+      // setLocalStorage("so-cart", cartItems);
     });
   }
 
   renderList(list) {
     renderListWithTemplate(productCardTemplate, this.listElement, list);
     renderListWithTemplate(productCardTemplate, this.listElement, list, "afterbegin", true);
-  } 
+  }
 }
