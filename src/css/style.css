@@ -230,7 +230,7 @@ button {
   background-color: #303030;
   font-size: 1.5rem;
   margin: 10px 0 0;
-  padding: .2em 0;
+  padding: 0.2em 0;
 }
 
 .cart-total {
@@ -284,4 +284,74 @@ footer {
 
 .sort-container button:hover {
   background-color: #e0e0e0;
+}
+
+/* Styles for product colors */
+.product__color {
+  font-size: var(--small-font);
+  font-weight: bold;
+  margin: 0.5em 0;
+  color: var(--secondary-color);
+}
+
+.color-swatch {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  margin-right: 0.5em;
+  border: 1px solid var(--light-grey);
+  cursor: pointer;
+}
+
+.color-swatch:hover {
+  border-color: var(--primary-color);
+}
+
+/* Newsletter styles */
+.newsletter {
+  text-align: center;
+  padding: 1em;
+  margin: 2em auto;
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+  max-width: 400px;
+  background-color: var(--tertiary-color);
+}
+
+.newsletter h2 {
+  font-size: var(--large-font);
+  margin-bottom: 0.5em;
+}
+
+.newsletter p {
+  font-size: var(--small-font);
+  margin-bottom: 1em;
+}
+
+#newsletter-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+#newsletter-form input[type="email"] {
+  padding: 0.5em;
+  font-size: var(--font-base);
+  border: 1px solid var(--light-grey);
+  border-radius: 5px;
+}
+
+#newsletter-form button {
+  padding: 0.5em;
+  font-size: var(--font-base);
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#newsletter-form button:hover {
+  background-color: var(--secondary-color);
 }
